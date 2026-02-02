@@ -1,6 +1,5 @@
 import './globals.css';
 import Header from "@/components/Header";
-import MovieVitrine from '@/components/MovieVitrine';
 import Footer from '@/components/Footer';
 import { Oxygen } from 'next/font/google';
 

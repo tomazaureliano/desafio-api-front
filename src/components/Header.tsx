@@ -1,5 +1,5 @@
 import Link from 'next/link'; // Importação essencial
-import { Oxygen } from 'next/font/google';
+
 export default function Header() {
   return (
     <header className="w-full h-[100px] px-10 flex items-center justify-between bg-black/65 backdrop-blur-md shadow-lg fixed top-0 z-50">
