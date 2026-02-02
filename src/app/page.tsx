@@ -3,18 +3,29 @@ import MovieVitrine from '@/components/MovieVitrine'
 import Hero from '@/components/Hero'
 
 
-export default function Home({ 
-  searchParams 
-}: { 
-  searchParams: { page?: string; genre?: string; search?: string } 
-}) {
+interface PageProps {
+  searchParams: Promise<{ 
+    page?: string; 
+    genre?: string; 
+    search?: string 
+  }>;
+}
+
+export default async function Home({ searchParams }: PageProps) {
+  // No Next.js 15, precisamos dar 'await' no searchParams
+  const params = await searchParams;
+  
+  const page = params.page || '1';
+  const genre = params.genre || '';
+  const search = params.search || '';
+
   return (
     <>
       <Hero />
       <MovieVitrine 
-        page={searchParams.page || '1'} 
-        genre={searchParams.genre || ''} 
-        search={searchParams.search || ''} 
+        page={page} 
+        genre={genre} 
+        search={search} 
       />
     </>
   );
