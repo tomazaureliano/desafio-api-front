@@ -1,7 +1,15 @@
-import type { NextConfig } from 'next'
+import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-    reactStrictMode: true, // causes double render on component mount (dev)
-}
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'image.tmdb.org',
+        pathname: '/t/p/**',
+      },
+    ],
+  },
+};
 
-export default nextConfig
+export default nextConfig;

@@ -2,6 +2,8 @@
 import React from 'react';
 import Link from 'next/link';
 import SearchBar from './SearchBar';
+import { Button } from "./ui/Button";
+import MovieCard from './ui/MovieCard';
 
 
 const GENRES = [
@@ -46,22 +48,14 @@ export async function getMovies(page: number = 1, genreId?: string, query?: stri
     totalPages: data.total_pages as number,
   };
 }
-
-export default async function MovieVitrine({ 
-  page = '1', 
-  genre = '',
-  search = '' 
-}: { 
-  page?: string, 
-  genre?: string,
-  search?: string 
-}) {
+console.log("DEBUG IMPORTS:", { SearchBar, Button, MovieCard });
+export default async function MovieVitrine({ page = '1', genre = '', search = '' }) {
   const currentPage = parseInt(page);
   const { results: movies, totalPages } = await getMovies(currentPage, genre, search);
   const IMG_URL = 'https://image.tmdb.org/t/p/w500';
 
   return (
-    <section id="vitrine" className="py-20 bg-zinc-950 px-6 scroll-mt-20">
+    <section id="vitrine" className="py-20 bg-black px-6 scroll-mt-20">
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-12">
           <h2 className="text-3xl font-bold text-white font-oxygen">
@@ -72,53 +66,51 @@ export default async function MovieVitrine({
           <SearchBar />
         </div>
 
-        {/* --- BARRA DE FILTROS (Escondida se estiver buscando por texto para não confundir) --- */}
+        {/* Filtros de Gênero usando Button styles */}
         {!search && (
           <div className="flex flex-wrap gap-3 mb-12">
             {GENRES.map((g) => (
-              <Link
-                key={g.id}
-                href={`?genre=${g.id}&page=1#vitrine`}
-                className={`px-6 py-2 rounded-full text-sm font-medium transition-all ${
-                  genre === g.id ? 'bg-red-600 text-white' : 'bg-zinc-900 text-zinc-400 hover:bg-zinc-800'
-                }`}
-              >
-                {g.name}
+              <Link key={g.id} href={`?genre=${g.id}&page=1#vitrine`}>
+                <Button variant={genre === g.id ? 'primary' : 'secondary'} size="sm">
+                  {g.name}
+                </Button>
               </Link>
             ))}
           </div>
         )}
 
-        {/* Grid de Filmes */}
+        {/* Grid usando o novo MovieCard */}
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
           {movies?.length > 0 ? (
             movies.map((movie) => (
-              <div key={movie.id} className="group relative bg-zinc-900 rounded-lg overflow-hidden transition-transform hover:scale-105 border border-zinc-800">
-                <img 
-                  src={movie.poster_path ? `${IMG_URL}${movie.poster_path}` : '/no-poster.png'} 
-                  alt={movie.title}
-                  className="w-full h-auto object-cover aspect-[2/3]"
-                />
-                <div className="p-4">
-                  <h3 className="text-white text-sm font-semibold truncate">{movie.title}</h3>
-                </div>
-              </div>
+              <MovieCard 
+                key={movie.id}
+                id={movie.id}
+                title={movie.title}
+                posterPath={movie.poster_path}
+                rating={movie.vote_average}
+              />
             ))
           ) : (
-            <p className="text-zinc-500 col-span-full text-center py-20">Nenhum filme encontrado para essa busca. 🍿</p>
+            <p className="text-zinc-500 col-span-full text-center py-20">Nenhum filme encontrado. 🍿</p>
           )}
         </div>
 
-        {/* Paginação atualizada para incluir a busca */}
+        {/* Paginação usando o componente Button */}
         <div className="flex justify-center items-center gap-6 mt-16">
-           {currentPage < totalPages && (
-             <Link 
-                href={`?search=${search}&genre=${genre}&page=${currentPage + 1}#vitrine`}
-                className="px-6 py-2 bg-zinc-900 text-white rounded-full hover:bg-red-600 transition-all"
-             > 
-               Próxima 
-             </Link>
-           )}
+          {currentPage > 1 && (
+            <Link href={`?search=${search}&genre=${genre}&page=${currentPage - 1}#vitrine`}>
+              <Button variant="ghost">← Anterior</Button>
+            </Link>
+          )}
+
+          <span className="text-zinc-500">Página {currentPage}</span>
+
+          {currentPage < (totalPages > 500 ? 500 : totalPages) && (
+            <Link href={`?search=${search}&genre=${genre}&page=${currentPage + 1}#vitrine`}>
+              <Button variant="outline">Próxima →</Button>
+            </Link>
+          )}
         </div>
       </div>
     </section>

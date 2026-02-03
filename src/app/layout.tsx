@@ -3,28 +3,19 @@ import Header from "@/components/Header";
 import Footer from '@/components/Footer';
 import { Oxygen } from 'next/font/google';
 
+
 const oxygen = Oxygen({ 
   weight: ['300', '400', '700'],
   subsets: ['latin'],
   variable: '--font-oxygen'
 });
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="pt-br">
-      <body className={`${oxygen.variable} font-sans bg-zinc-950`}>
+    <html lang="pt-BR">
+      <body className={`${oxygen.variable} bg-black text-white antialiased`}>
         <Header />
-
-        <main>
-          {children} {/* Aqui entra o conteúdo da Landing Page */}
-        </main>
-
-       
-
+        {children}
         <Footer />
       </body>
     </html>
