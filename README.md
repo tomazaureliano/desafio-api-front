@@ -45,4 +45,14 @@ GET /discover/movie: Para a filtragem refinada por gêneros.
 
 GET /movie/{id}: Para a recuperação de metadados na página de detalhes.
 
+##Observações Técnicas
+
+Configuração de Imagens: O arquivo next.config.ts foi configurado com remotePatterns para autorizar e otimizar o domínio image.tmdb.org, garantindo segurança e performance no carregamento dos pôsteres.
+
+Componentização: Utilização de uma arquitetura baseada em componentes reutilizáveis (Button, MovieCard, SearchBar).
+
+Server Components: As buscas de dados da API são realizadas no lado do servidor (Server-side), melhorando o SEO e a velocidade de carregamento inicial.
+
+Dynamic Routing: Implementação de rotas dinâmicas [id] para renderização eficiente de milhares de páginas de filmes com um único template.
+
 
