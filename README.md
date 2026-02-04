@@ -12,6 +12,10 @@ O projeto é um Web App com Landing Page, vitrine de contéudo com filtros de g�
 
 ## Instruções de Execução
 
+> [!NOTE]
+> Configurar Variáveis de Ambiente: Altere o nome de .env.example para .env.local e insira sua chave de API
+>`NEXT_PUBLIC_TMDB_API_KEY=sua_chave_aqui`
+> 
 Para rodar o projeto localmente, siga os passos abaixo no terminal:
 
 Clonar o Repositório:
@@ -21,10 +25,6 @@ Clonar o Repositório:
 Instalar Dependências:
 
 `npm install`
-
-> [!NOTE]
-> Configurar Variáveis de Ambiente: Altere o nome de .env.example para .env.local e insira sua chave de API
->`NEXT_PUBLIC_TMDB_API_KEY=sua_chave_aqui`
 
 Executar o Servidor de Desenvolvimento:
 
