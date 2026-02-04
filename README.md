@@ -1,4 +1,5 @@
 # MovieNight : Descubra o que assistir de forma fácil e rápida!
+<img width="1864" height="831" alt="Captura de tela 2026-02-04 194010" src="https://github.com/user-attachments/assets/69bb7aa1-a054-4c51-b56f-023df6b85bf4" />
 
 
 ## Descrição
