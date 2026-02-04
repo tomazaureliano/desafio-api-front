@@ -16,23 +16,20 @@ Para rodar o projeto localmente, siga os passos abaixo:
 Clonar o Repositório:
 
 Bash
-git clone https://github.com/tomazaureliano/desafio-api2.git
-cd movie-night
+git clone [https://github.com/tomazaureliano/desafio-api2.git](https://github.com/tomazaureliano/desafio-api2/tree/master)
 
 Instalar Dependências:
 
-Bash
 npm install
 
-Configurar Variáveis de Ambiente: Altere o nome de .env.example para .env.local e insira sua chave de API
-
-Code snippet
-NEXT_PUBLIC_TMDB_API_KEY=sua_chave_aqui
+> [!NOTE]
+> Configurar Variáveis de Ambiente: Altere o nome de .env.example para .env.local e insira sua chave de API
+>NEXT_PUBLIC_TMDB_API_KEY=sua_chave_aqui
 
 Executar o Servidor de Desenvolvimento:
 
-Bash
 npm run dev
+
 Acesse o projeto em http://localhost:3000.
 
 ## API Utilizada
@@ -60,7 +57,7 @@ Next.js is a React framework that enables functionality like server-side renderi
 > [!IMPORTANT]
 > Next.js has a clear and well documented API. It is recommended to read the documentation to understand the features and capabilities of Next.js.
 
-> [!NOTE]
+>  [!NOTE]
 > Learn about Next's server side rendering, static site generation, and serverless functions here: [Next.js Server Components](https://nextjs.org/docs/app/building-your-application/rendering/server-components).
 
 ### React
