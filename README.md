@@ -1,4 +1,4 @@
-# Next.js + React + Tailwind CSS + TypeScript + ESLint project template
+# MovieNight : Descubra o que assistir de forma fácil e rápida!
 
 [![en](https://img.shields.io/badge/lang-en-red.svg)](https://github.com/seedabit/nextjs-react-typescript/blob/main/README.md)
 [![pt-br](https://img.shields.io/badge/lang-pt--br-green.svg)](https://github.com/seedabit/nextjs-react-typescript/blob/main/README.pt-br.md)
