@@ -1,4 +1,4 @@
-// src/components/Hero.tsx
+
 import React from 'react';
 
 export default function Hero() {
@@ -30,7 +30,7 @@ export default function Hero() {
             o melhor filme para a sua noite.
           </p>
 
-          {/* BOTÃO FUNCIONAL - Rola até #vitrine */}
+     
           <div className="pt-6">
             <a 
               href="#vitrine" 

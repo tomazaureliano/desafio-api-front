@@ -1,9 +1,9 @@
-import Link from 'next/link'; // Importação essencial
+import Link from 'next/link';
 export default function Header() {
   return (
     <header className="w-full h-[100px] px-10 flex items-center justify-between bg-black/65 backdrop-blur-md shadow-lg fixed top-0 z-50">
       
-      {/* Lado Esquerdo: Logo e Nome */}
+
       <div className="flex items-center gap-4">
         <img 
           src="/icons/logo.svg" 
@@ -16,7 +16,7 @@ export default function Header() {
         </h1>
       </div>
 
-      {/* Lado Direito: Navegação */}
+
       <nav className="flex items-center gap-10">
         <Link 
           href="#vitrine" 

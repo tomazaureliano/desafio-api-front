@@ -12,7 +12,7 @@ interface PageProps {
 }
 
 export default async function Home({ searchParams }: PageProps) {
-  // No Next.js 15, precisamos dar 'await' no searchParams
+
   const params = await searchParams;
   
   const page = params.page || '1';

@@ -1,4 +1,4 @@
-// components/MovieVitrine.tsx
+
 import React from 'react';
 import Link from 'next/link';
 import SearchBar from './SearchBar';
@@ -26,12 +26,12 @@ export async function getMovies(page: number = 1, genreId?: string, query?: stri
   let endpoint = 'movie/popular';
   let params = `&page=${page}`;
 
-  // Prioridade 1: Busca por texto
+
   if (query) {
     endpoint = 'search/movie';
     params += `&query=${encodeURIComponent(query)}`;
   } 
-  // Prioridade 2: Filtro por gênero
+
   else if (genreId) {
     endpoint = 'discover/movie';
     params += `&with_genres=${genreId}`;
@@ -61,11 +61,11 @@ export default async function MovieVitrine({ page = '1', genre = '', search = ''
             {search ? `Resultados para: ${search}` : 'Explorar Catálogo'}
           </h2>
           
-          {/* Aqui é onde o erro acontece se o SearchBar não for exportado como DEFAULT */}
+    
           <SearchBar />
         </div>
 
-        {/* Filtros de Gênero usando Button styles */}
+
         {!search && (
           <div className="flex flex-wrap gap-3 mb-12">
             {GENRES.map((g) => (
@@ -78,7 +78,7 @@ export default async function MovieVitrine({ page = '1', genre = '', search = ''
           </div>
         )}
 
-        {/* Grid usando o novo MovieCard */}
+
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
           {movies?.length > 0 ? (
             movies.map((movie) => (
@@ -95,7 +95,7 @@ export default async function MovieVitrine({ page = '1', genre = '', search = ''
           )}
         </div>
 
-        {/* Paginação usando o componente Button */}
+
         <div className="flex justify-center items-center gap-6 mt-16">
           {currentPage > 1 && (
             <Link href={`?search=${search}&genre=${genre}&page=${currentPage - 1}#vitrine`}>

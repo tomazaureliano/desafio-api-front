@@ -6,7 +6,6 @@ async function getMovies() {
   try {
 
     
-    // Mapeando os dados para sua vitrine
     interface Movie {
         title: string;
         poster_path: string;
@@ -28,7 +27,6 @@ async function getMovies() {
     const movieResponse = await fetch(`${BASE_URL}/movie/popular?api_key=${API_KEY}&language=pt-BR`);
     const data: ApiResponse = await movieResponse.json();
     
-    // Mapeando os dados para sua vitrine
     const movies: MappedMovie[] = data.results.map(movie => ({
         titulo: movie.title,
         poster: `${IMG_URL}${movie.poster_path}`,
