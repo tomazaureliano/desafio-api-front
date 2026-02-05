@@ -20,7 +20,7 @@ Para rodar o projeto localmente, siga os passos abaixo no terminal:
 
 Clonar o Repositório:
 
-`git clone [https://github.com/tomazaureliano/desafio-api2.git](https://github.com/tomazaureliano/desafio-api2/tree/master)`
+`git clone `[https://github.com/tomazaureliano/desafio-api2.git](https://github.com/tomazaureliano/desafio-api2/tree/master)
 
 Instalar Dependências:
 
