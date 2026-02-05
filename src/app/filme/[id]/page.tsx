@@ -1,16 +1,32 @@
 // src/app/filme/[id]/page.tsx
 import React from 'react';
-import BackButton from "@/components/ui/BackButton"; // Componente que criaremos abaixo
+import BackButton from "@/components/ui/BackButton";
 
-// Função para formatar minutos em "Xh Ymin"
+
+interface CastMember {
+  id: number;
+  name: string;
+  character: string;
+}
+
+interface MovieDetails {
+  title: string;
+  overview: string;
+  backdrop_path: string;
+  runtime: number;
+  release_date: string;
+  credits: {
+    cast: CastMember[];
+  };
+}
+
 const formatRuntime = (minutes: number) => {
   const hours = Math.floor(minutes / 60);
   const mins = minutes % 60;
   return `${hours}h ${mins}min`;
 };
 
-async function getMovieDetails(id: string) {
-  // O 'append_to_response=credits' traz os atores na mesma chamada
+async function getMovieDetails(id: string): Promise<MovieDetails | null> {
   const res = await fetch(
     `https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.NEXT_PUBLIC_TMDB_API_KEY}&language=pt-BR&append_to_response=credits`,
     { next: { revalidate: 3600 } }
@@ -27,7 +43,11 @@ export default async function MoviePage({ params }: { params: Promise<{ id: stri
 
   const backdropUrl = `https://image.tmdb.org/t/p/original${movie.backdrop_path}`;
   const releaseYear = movie.release_date ? new Date(movie.release_date).getFullYear() : 'N/A';
-  const mainCast = movie.credits?.cast?.slice(0, 5).map((a: any) => a.name).join(', ');
+  
+  const mainCast = movie.credits?.cast
+    ?.slice(0, 5)
+    .map((actor: CastMember) => actor.name)
+    .join(', ');
 
   return (
     <main className="min-h-screen bg-zinc-950 text-white font-oxygen">
