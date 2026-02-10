@@ -47,7 +47,7 @@ GET /discover/movie: Para a filtragem refinada por gêneros.
 
 GET /movie/{id}: Para a recuperação de metadados na página de detalhes.
 
-##Observações Técnicas
+## Observações Técnicas
 
 Configuração de Imagens: O arquivo next.config.ts foi configurado com remotePatterns para autorizar e otimizar o domínio image.tmdb.org, garantindo segurança e performance no carregamento dos pôsteres.
 
